@@ -1,0 +1,18 @@
+[
+  {
+    "question": "What was total net revenue for the fiscal year?",
+    "expectedPhrases": ["total net revenue", "net sales"]
+  },
+  {
+    "question": "What are the main risks related to supply chain?",
+    "expectedPhrases": ["supply chain", "suppliers"]
+  },
+  {
+    "question": "How much did the company spend on research and development?",
+    "expectedPhrases": ["research and development"]
+  },
+  {
+    "question": "What is the recipe for chocolate cake?",
+    "expectNotFound": true
+  }
+]
