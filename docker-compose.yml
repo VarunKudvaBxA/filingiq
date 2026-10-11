@@ -1,0 +1,24 @@
+# One command to run everything:  docker compose up --build
+services:
+  mongo:
+    # Local MongoDB with Atlas Vector Search support (same $vectorSearch as the cloud).
+    image: mongodb/mongodb-atlas-local:latest
+    ports: ["27017:27017"]
+    volumes: [mongo-data:/data/db]
+
+  server:
+    build: ./server
+    env_file: ./server/.env
+    environment:
+      MONGO_URI: mongodb://mongo:27017/filingiq?directConnection=true
+      CLIENT_URL: http://localhost:8080
+    depends_on: [mongo]
+    ports: ["5000:5000"]
+
+  client:
+    build: ./client
+    depends_on: [server]
+    ports: ["8080:80"]
+
+volumes:
+  mongo-data:
